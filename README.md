@@ -41,5 +41,10 @@ Then run the migration:
 
     $ rake db:migrate
 
+To rollback:
+
+    $ rake db:rollback
+    $ rails d spree_scaffold:scaffold Brand
+
 
 Copyright (c) 2014 sebastyuiop, alepore, released under the New BSD License
