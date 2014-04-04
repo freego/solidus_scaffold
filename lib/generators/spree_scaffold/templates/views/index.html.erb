@@ -1,36 +1,35 @@
-<div class='toolbar'>
-  <ul class='actions'>
-    <li>
-      <p><%%= button_link_to t("new_<%= model_path %>"), new_object_url, :icon => 'add' %></p>
-    </li>
-  </ul>
-  <br class='clear' />
-</div>
+<%% content_for :page_title do %>
+  <%%= Spree.t("listing_<%= model_name.pluralize %>") %>
+<%% end %>
 
-<h1><%%= t("listing_<%= model_path.pluralize %>") %></h1>
+<%% content_for :page_actions do %>
+  <li>
+    <%%= button_link_to Spree.t("new_<%= model_name %>"), new_object_url, icon: 'icon-plus', id: 'admin_new_<%= model_name %>_link' %>
+  </li>
+<%% end %>
 
-<table class="index">
+<table class="index" id="listing_<%= model_name.pluralize %>" data-hook>
+  <colgroup>
+    <col style="width: 85%">
+    <col style="width: 15%">
+  </colgroup>
   <thead>
-  <tr>
-    <% for attribute in model_attributes -%>
-      <th><%= attribute.name %></th>
-    <% end %>
-    <th>&nbsp;</th>
-  </tr>
+    <tr data-hook="admin_<%= model_name.pluralize %>_index_headers">
+      <th><%= model_attributes.first.name %></th>
+      <th data-hook="admin_<%= model_name.pluralize %>_index_header_actions" class="actions"></th>
+    </tr>
   </thead>
   <tbody>
-    <%% @<%= model_path.pluralize %>.each do |<%= model_path %>|%>
-      <tr id="<%%= dom_id <%= model_path %> %>">
-        <% for attribute in model_attributes -%>
-          <td width="350px"><%%= link_to <%= model_path %>.<%= attribute.name %>, edit_object_url(<%= model_path %>) %></td>
-        <% end %>
-        <td>
-          <%%= link_to_edit <%= model_path %> %> &nbsp;
-          <%%= link_to_delete <%= model_path %> %>
+    <%% @<%= model_name.pluralize %>.each do |<%= model_name %>| %>
+      <tr id="<%%= spree_dom_id <%= model_name %> %>" data-hook="admin_<%= model_name.pluralize %>_index_rows" class="<%%= cycle('odd', 'even')%>">
+        <td><%%= link_to <%= model_name %>.<%= model_attributes.first.name %>, edit_object_url(<%= model_name %>) %></td>
+        <td data-hook="admin_<%= model_name.pluralize %>_index_row_actions" class="actions">
+          <%%= link_to_edit <%= model_name %>, no_text: true %>
+          <%%= link_to_delete <%= model_name %>, no_text: true %>
         </td>
       </tr>
     <%% end %>
   </tbody>
 </table>
 
-<%%= paginate @<%= model_path.pluralize %> %>
+<%%= paginate @<%= model_name.pluralize %> %>

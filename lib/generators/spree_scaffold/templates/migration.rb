@@ -1,4 +1,4 @@
-class Create<%= class_name.pluralize %> < ActiveRecord::Migration
+class CreateSpree<%= class_name.pluralize %> < ActiveRecord::Migration
   def self.up
     create_table :<%= model_path.pluralize %> do |t|
     <%- for attribute in model_attributes -%>

@@ -1,4 +1,4 @@
-module SpreeAdminScaffold
+module SpreeScaffold
   class Engine < Rails::Engine
     require 'spree/core'
     isolate_namespace Spree

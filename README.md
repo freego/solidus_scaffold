@@ -3,36 +3,43 @@ SpreeScaffold
 
 A basic admin scaffold generator for Spree.
 
-Creates a CRUD interface for whatever you want using the Spree admin styling.
+Creates a CRUD interface for your models inside Spree admin.
 
-It also creates an admin menu item using Deface::Override in an initializer.
-Don't forget to restart the app for the button to show up in the admin menu bar.
+Installation
+============
 
-Example
-=======
+Add this line to your application's Gemfile:
+```ruby
+gem 'spree_scaffold', github: 'freego/spree_scaffold', branch: '2-2-stable'
+```
 
-To install
+And then execute:
 
-    gem 'spree_scaffold', github: 'alepore/spree_scaffold'
+    $ bundle
 
-To generate a scaffold:
+Usage
+=====
 
-    rails g spree:scaffold Cat name:string colour:string
+Generate a scaffold for the new `Brand` model:
 
-Which produces:
+    $ rails g spree_scaffold:scaffold Brand name:string description:text
 
-    create  app/models/cat.rb
-    create  app/controllers/admin/cats_controller.rb
-    create  app/views/admin/cats/index.html.erb
-    create  app/views/admin/cats/new.html.erb
-    create  app/views/admin/cats/edit.html.erb
-    create  app/views/admin/cats/_form.html.erb
-    create  db/migrate/20110620133021_create_cats.rb
-    create  config/locales/en_cats.yml
+Output:
 
-    rake db:migrate
+    create  app/models/spree/brand.rb
+    create  app/controllers/spree/admin/brands_controller.rb
+    create  app/views/spree/admin/brands/index.html.erb
+    create  app/views/spree/admin/brands/new.html.erb
+    create  app/views/spree/admin/brands/edit.html.erb
+    create  app/views/spree/admin/brands/_form.html.erb
+    create  db/migrate/20140404065541_create_spree_brands.rb
+    create  config/locales/en_spree_brands.yml
+    create  app/overrides/spree/admin/add_spree_brands_to_admin_menu.rb
+    append  config/routes.rb
+
+Then run the migration:
+
+    $ rake db:migrate
 
 
-You'll need to add a route under the admin namespace for the above (e.g resources :cats).
-
-Copyright (c) 2014 sebastyuiop, released under the New BSD License
+Copyright (c) 2014 sebastyuiop, alepore, released under the New BSD License

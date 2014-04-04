@@ -1,4 +1,5 @@
 en:
-  new_<%= model_path %>: "New <%= display_name %>"
-  listing_<%= model_path.pluralize %>: "Listing <%= display_name_plural %>"
-  editing_<%= model_path %>: "Editing <%= display_name %>"
+  spree:
+    new_<%= model_path %>: "New <%= display_name %>"
+    listing_<%= model_path.pluralize %>: "Listing <%= display_name_plural %>"
+    editing_<%= model_path %>: "Editing <%= display_name %>"

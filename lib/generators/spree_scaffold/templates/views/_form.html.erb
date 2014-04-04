@@ -1,6 +1,11 @@
-<%- for attribute in model_attributes -%>
-<p>
-  <%%= f.label :<%= attribute.name %> %><br />
-  <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
-</p>
-<%- end -%>
+<div data-hook="admin_<%= model_name %>_form_fields" class="row">
+  <div class="twelve columns">
+  <% model_attributes.each do |attribute| %>
+    <%%= f.field_container :<%= attribute.name %> do %>
+      <%%= f.label :<%= attribute.name %>, Spree.t(:<%= attribute.name %>) %>
+      <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'fullwidth' %>
+      <%%= error_message_on :<%= model_name %>, :<%= attribute.name %> %>
+    <%% end %>
+  <% end %>
+  </div>
+</div>
