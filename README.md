@@ -32,8 +32,9 @@ Output:
     create  app/views/spree/admin/brands/new.html.erb
     create  app/views/spree/admin/brands/edit.html.erb
     create  app/views/spree/admin/brands/_form.html.erb
-    create  db/migrate/20140404065541_create_spree_brands.rb
-    create  config/locales/en_spree_brands.yml
+    create  db/migrate/20140412175904_create_spree_brands.rb
+    create  config/locales/en_brands.yml
+    create  config/locales/it_brands.yml
     create  app/overrides/spree/admin/add_spree_brands_to_admin_menu.rb
     append  config/routes.rb
 

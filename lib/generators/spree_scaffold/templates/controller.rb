@@ -3,47 +3,47 @@ module Spree
     class <%= class_name.pluralize %>Controller < ResourceController
 
       def index
-        @<%= model_name.pluralize %> = <%= class_path %>.page(params[:page] || 1).per(50)
+        @<%= plural_name %> = Spree::<%= class_name %>.page(params[:page] || 1).per(50)
       end
 
       def new
-        @<%= model_name %> = <%= class_path %>.new
+        @<%= singular_name %> = Spree::<%= class_name %>.new
       end
 
       def create
-        @<%= model_name %> = <%= class_path %>.new(<%= model_name %>_params)
-        if @<%= model_name %>.save
-          flash[:notice] = "Successfully created <%= display_name %>."
-          redirect_to admin_<%= model_name.pluralize %>_url
+        @<%= singular_name %> = Spree::<%= class_name %>.new(<%= plural_name %>_params)
+        if @<%= singular_name %>.save
+          flash[:success] = "Successfully created <%= singular_name %>."
+          redirect_to admin_<%= plural_name %>_url
         else
           render :action => 'new'
         end
       end
 
       def edit
-        @<%= model_name %> = <%= class_path %>.find(params[:id])
+        @<%= singular_name %> = Spree::<%= class_name %>.find(params[:id])
       end
 
       def update
-        @page = <%= class_path %>.find(params[:id])
-        if @<%= model_name %>.update_attributes(<%= model_name %>_params)
-          flash[:notice] = "Successfully updated <%= display_name %>."
-          redirect_to admin_<%= model_name.pluralize %>_url
+        @page = Spree::<%= class_name %>.find(params[:id])
+        if @<%= singular_name %>.update_attributes(<%= plural_name %>_params)
+          flash[:success] = "Successfully updated <%= singular_name %>."
+          redirect_to admin_<%= plural_name %>_url
         else
           render :action => 'edit'
         end
       end
 
       def destroy
-        @<%= model_name %> = <%= class_path %>.find(params[:id])
-        @<%= model_name %>.destroy
-        flash[:notice] = "Successfully destroyed <%= display_name %>."
-        redirect_to admin_<%= model_name.pluralize %>_url
+        @<%= singular_name %> = Spree::<%= class_name %>.find(params[:id])
+        @<%= singular_name %>.destroy
+        flash[:success] = "Successfully destroyed <%= singular_name %>."
+        redirect_to admin_<%= plural_name %>_url
       end
 
       private
-      def <%= model_name %>_params
-        params.require(:<%= model_name %>).permit([<%= model_attributes.map { |attribute| ":#{attribute.name}" }.join(',') %>])
+      def <%= plural_name %>_params
+        params.require(:<%= singular_name %>).permit([<%= attributes.map { |attribute| ":#{attribute.name}" }.join(',') %>])
       end
     end
   end

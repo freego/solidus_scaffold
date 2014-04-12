@@ -7,12 +7,12 @@ Example:
     rails generate spree:scaffold ModelName attribute_1:type_1 attribute_2:type_2
 
     This will create:
-	    app/models/model_name.rb
-	    app/controllers/admin/model_names_controller.rb
-	    app/views/admin/model_names/index.html.erb
-	    app/views/admin/model_names/new.html.erb
-	    app/views/admin/model_names/edit.html.erb
-	    app/views/admin/model_names/_form.html.erb
-	    db/migrate/TIMESTAMP_create_model_names.rb
-	    config/locales/en_model_names.yml
-	    config/initializers/spree_scaffold_model_names_hooks.rb
+	    app/models/class_name.rb
+	    app/controllers/admin/class_names_controller.rb
+	    app/views/admin/class_names/index.html.erb
+	    app/views/admin/class_names/new.html.erb
+	    app/views/admin/class_names/edit.html.erb
+	    app/views/admin/class_names/_form.html.erb
+	    db/migrate/TIMESTAMP_create_class_names.rb
+	    config/locales/en_class_names.yml
+	    config/initializers/spree_scaffold_class_names_hooks.rb

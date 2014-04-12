@@ -1,0 +1,5 @@
+en:
+  spree:
+    new_<%= singular_name %>: "New <%= class_name %>"
+    listing_<%= plural_name %>: "Listing <%= class_name.pluralize %>"
+    editing_<%= singular_name %>: "Editing <%= class_name %>"

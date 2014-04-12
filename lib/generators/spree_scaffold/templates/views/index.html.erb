@@ -1,35 +1,35 @@
 <%% content_for :page_title do %>
-  <%%= Spree.t("listing_<%= model_name.pluralize %>") %>
+  <%%= Spree.t(:listing_<%= plural_name %>) %>
 <%% end %>
 
 <%% content_for :page_actions do %>
   <li>
-    <%%= button_link_to Spree.t("new_<%= model_name %>"), new_object_url, icon: 'icon-plus', id: 'admin_new_<%= model_name %>_link' %>
+    <%%= button_link_to Spree.t(:new_<%= singular_name %>), new_object_url, icon: 'icon-plus', id: 'admin_new_<%= singular_name %>_link' %>
   </li>
 <%% end %>
 
-<table class="index" id="listing_<%= model_name.pluralize %>" data-hook>
+<table class="index" id="listing_<%= plural_name %>" data-hook>
   <colgroup>
     <col style="width: 85%">
     <col style="width: 15%">
   </colgroup>
   <thead>
-    <tr data-hook="admin_<%= model_name.pluralize %>_index_headers">
-      <th><%= model_attributes.first.name %></th>
-      <th data-hook="admin_<%= model_name.pluralize %>_index_header_actions" class="actions"></th>
+    <tr data-hook="admin_<%= plural_name %>_index_headers">
+      <th><%= attributes.first.name %></th>
+      <th data-hook="admin_<%= plural_name %>_index_header_actions" class="actions"></th>
     </tr>
   </thead>
   <tbody>
-    <%% @<%= model_name.pluralize %>.each do |<%= model_name %>| %>
-      <tr id="<%%= spree_dom_id <%= model_name %> %>" data-hook="admin_<%= model_name.pluralize %>_index_rows" class="<%%= cycle('odd', 'even')%>">
-        <td><%%= link_to <%= model_name %>.<%= model_attributes.first.name %>, edit_object_url(<%= model_name %>) %></td>
-        <td data-hook="admin_<%= model_name.pluralize %>_index_row_actions" class="actions">
-          <%%= link_to_edit <%= model_name %>, no_text: true %>
-          <%%= link_to_delete <%= model_name %>, no_text: true %>
+    <%% @<%= plural_name %>.each do |<%= singular_name %>| %>
+      <tr id="<%%= spree_dom_id <%= singular_name %> %>" data-hook="admin_<%= plural_name %>_index_rows" class="<%%= cycle('odd', 'even')%>">
+        <td><%%= link_to <%= singular_name %>.<%= attributes.first.name %>, edit_object_url(<%= singular_name %>) %></td>
+        <td data-hook="admin_<%= plural_name %>_index_row_actions" class="actions">
+          <%%= link_to_edit <%= singular_name %>, no_text: true %>
+          <%%= link_to_delete <%= singular_name %>, no_text: true %>
         </td>
       </tr>
     <%% end %>
   </tbody>
 </table>
 
-<%%= paginate @<%= model_name.pluralize %> %>
+<%%= paginate @<%= plural_name %> %>

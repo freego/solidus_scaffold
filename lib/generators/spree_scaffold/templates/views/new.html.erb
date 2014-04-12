@@ -1,22 +1,22 @@
 <%% content_for :page_title do %>
-  <%%= Spree.t("new_<%= model_name %>") %>
+  <%%= Spree.t(:new_<%= singular_name %>) %>
 <%% end %>
 
 <%% content_for :page_actions do %>
   <li>
-    <%%= button_link_to Spree.t(:back_to_<%= model_name.pluralize %>_list), collection_url, :icon => 'icon-arrow-left' %>
+    <%%= button_link_to Spree.t(:back_to_<%= plural_name %>_list), collection_url, :icon => 'icon-arrow-left' %>
   </li>
 <%% end %>
 
-<div data-hook="admin_<%= model_name %>_new_form_header">
-  <%%= render :partial => 'spree/shared/error_messages', :locals => { :target => @<%= model_name %> } %>
+<div data-hook="admin_<%= singular_name %>_new_form_header">
+  <%%= render :partial => 'spree/shared/error_messages', :locals => { :target => @<%= singular_name %> } %>
 </div>
 
-<div data-hook="admin_<%= model_name %>_new_form">
-  <%%= form_for [:admin, @<%= model_name %>] do |f| %>
+<div data-hook="admin_<%= singular_name %>_new_form">
+  <%%= form_for [:admin, @<%= singular_name %>] do |f| %>
     <%%= render :partial => 'form', :locals => { :f => f } %>
 
-    <div data-hook="admin_<%= model_name %>_new_form_buttons">
+    <div data-hook="admin_<%= singular_name %>_new_form_buttons">
       <%%= render :partial => 'spree/admin/shared/new_resource_links' %>
     </div>
   <%% end %>
