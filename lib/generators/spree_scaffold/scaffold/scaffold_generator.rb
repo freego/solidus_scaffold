@@ -37,7 +37,29 @@ module SpreeScaffold
       end
 
       def create_routes
-        append_file 'config/routes.rb',
+        append_file 'config/routes.rb', routes_text
+      end
+
+      protected
+        def sortable?
+          self.attributes.find { |a| a.name == 'position' && a.type == :integer }
+        end
+
+      private
+        def routes_text
+          if sortable?
+<<-eos
+Spree::Core::Engine.add_routes do
+  namespace :admin do
+    resources :#{plural_name} do
+      collection do
+        post :update_positions
+      end
+    end
+  end
+end
+eos
+          else
 <<-eos
 Spree::Core::Engine.add_routes do
   namespace :admin do
@@ -45,8 +67,8 @@ Spree::Core::Engine.add_routes do
   end
 end
 eos
-      end
-
+          end
+        end
     end
   end
 end

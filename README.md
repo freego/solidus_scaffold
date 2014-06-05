@@ -22,7 +22,7 @@ Usage
 
 Generate a scaffold for the new `Brand` model:
 
-    $ rails g spree_scaffold:scaffold Brand name:string description:text
+    $ rails g spree_scaffold:scaffold Brand name:string description:text position:integer
 
 Output:
 
@@ -46,6 +46,9 @@ To rollback:
 
     $ rake db:rollback
     $ rails d spree_scaffold:scaffold Brand
+
+Some more magic:
+* The admin index list will be sortable with drag&drop if you create a `position:integer` field
 
 
 Copyright (c) 2014 sebastyuiop, alepore, released under the New BSD License

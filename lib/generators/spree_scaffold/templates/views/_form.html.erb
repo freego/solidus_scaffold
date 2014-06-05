@@ -1,6 +1,7 @@
 <div data-hook="admin_<%= singular_name %>_form_fields" class="row">
   <div class="twelve columns">
   <% attributes.each do |attribute| %>
+    <% next if attribute.name == 'position' && attribute.type == :integer %>
     <%%= f.field_container :<%= attribute.name %> do %>
       <%%= f.label :<%= attribute.name %>, Spree.t(:<%= attribute.name %>) %>
       <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'fullwidth' %>
