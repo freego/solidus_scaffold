@@ -39,7 +39,7 @@ module SpreeScaffold
       end
 
       def create_deface_override
-        template 'overrides/add_to_admin_menu.rb', "app/overrides/spree/admin/add_spree_#{plural_name}_to_admin_menu.rb"
+        template 'overrides/add_to_admin_menu.html.erb.deface', "app/overrides/spree/admin/shared/_menu/add_spree_#{plural_name}.html.erb.deface"
       end
 
       def create_routes
