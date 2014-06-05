@@ -22,7 +22,7 @@ Usage
 
 Generate a scaffold for the new `Brand` model:
 
-    $ rails g spree_scaffold:scaffold Brand name:string description:text position:integer
+    $ rails generate spree_scaffold:scaffold Brand name:string description:text position:integer ...
 
 Output:
 
@@ -45,10 +45,11 @@ Then run the migration:
 To rollback:
 
     $ rake db:rollback
-    $ rails d spree_scaffold:scaffold Brand
+    $ rails destroy spree_scaffold:scaffold Brand name:string description:text position:integer ...
 
 Some more magic:
 * The admin index list will be sortable with drag&drop if you create a `position:integer` field
+* Image and file attachments are supported: e.g. `picture:image attachment:file`
 
 
 Copyright (c) 2014 sebastyuiop, alepore, released under the New BSD License

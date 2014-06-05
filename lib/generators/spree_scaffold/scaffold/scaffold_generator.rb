@@ -3,9 +3,15 @@ require 'rails/generators/named_base'
 module SpreeScaffold
   module Generators
     class ScaffoldGenerator < Rails::Generators::NamedBase
+      include Rails::Generators::Migration
+
       source_root File.expand_path('../../templates', __FILE__)
 
       argument :attributes, type: :array, default: [], banner: 'field:type field:type'
+
+      def self.next_migration_number(path)
+        current_migration_number(path).to_i.succ
+      end
 
       def create_model
         template 'model.rb', "app/models/spree/#{singular_name}.rb"
@@ -21,9 +27,9 @@ module SpreeScaffold
         end
       end
 
-      def create_migration
-        stamp =  Time.now.utc.strftime("%Y%m%d%H%M%S")
-        template 'migration.rb', "db/migrate/#{stamp}_create_spree_#{plural_name}.rb"
+      def create_migrations
+        migration_template 'migration.rb', "db/migrate/create_spree_#{plural_name}.rb"
+        migration_template 'migration_paperclip.rb', "db/migrate/create_spree_#{plural_name}_attachments.rb" if has_attachments?
       end
 
       def create_locale
@@ -43,6 +49,10 @@ module SpreeScaffold
       protected
         def sortable?
           self.attributes.find { |a| a.name == 'position' && a.type == :integer }
+        end
+
+        def has_attachments?
+          self.attributes.find { |a| a.type == :image || a.type == :file }
         end
 
       private

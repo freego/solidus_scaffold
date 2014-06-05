@@ -11,7 +11,7 @@ module Spree
       end
 
       def create
-        @<%= singular_name %> = Spree::<%= class_name %>.new(<%= plural_name %>_params)
+        @<%= singular_name %> = Spree::<%= class_name %>.new(<%= singular_name %>_params)
         if @<%= singular_name %>.save
           flash[:success] = "Successfully created <%= singular_name %>."
           redirect_to admin_<%= plural_name %>_url
@@ -26,7 +26,7 @@ module Spree
 
       def update
         @page = Spree::<%= class_name %>.find(params[:id])
-        if @<%= singular_name %>.update_attributes(<%= plural_name %>_params)
+        if @<%= singular_name %>.update_attributes(<%= singular_name %>_params)
           flash[:success] = "Successfully updated <%= singular_name %>."
           redirect_to admin_<%= plural_name %>_url
         else
@@ -42,8 +42,8 @@ module Spree
       end
 
       private
-      def <%= plural_name %>_params
-        params.require(:<%= singular_name %>).permit([<%= attributes.map { |attribute| ":#{attribute.name}" }.join(',') %>])
+      def <%= singular_name %>_params
+        params.require(:<%= singular_name %>).permit([<%= attributes.map { |attribute| ":#{attribute.name}" }.join(', ') %>])
       end
     end
   end

@@ -4,8 +4,23 @@
     <% next if attribute.name == 'position' && attribute.type == :integer %>
     <%%= f.field_container :<%= attribute.name %> do %>
       <%%= f.label :<%= attribute.name %>, Spree.t(:<%= attribute.name %>) %>
-      <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'fullwidth' %>
+      <% if attribute.type == :image || attribute.type == :file %>
+      <%%= f.file_field :<%= attribute.name %>, class: 'fullwidth' %>
+      <% else %>
+      <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, class: 'fullwidth' %>
+      <% end %>
       <%%= error_message_on :<%= singular_name %>, :<%= attribute.name %> %>
+      <% if attribute.type == :image %>
+      <%% if f.object.<%= attribute.name %>_file_name %>
+        <br><br>
+        <%%= image_tag f.object.<%= attribute.name %>.url(:large) %>
+      <%% end %>
+      <% elsif attribute.type == :file %>
+      <%% if f.object.<%= attribute.name %>_file_name %>
+        <%%= link_to Spree.t(:download_file), f.object.<%= attribute.name %>.url,
+                              target: '_blank' %>
+      <%% end %>
+      <% end %>
     <%% end %>
   <% end %>
   </div>
