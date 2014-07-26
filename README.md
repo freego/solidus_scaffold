@@ -3,14 +3,17 @@ SpreeScaffold
 
 A basic admin scaffold generator for Spree.
 
-Creates a CRUD interface for your models inside Spree admin.
+Creates a ready to use CRUD interface for your models inside Spree admin.
 
 Installation
 ============
 
 Add this line to your application's Gemfile:
 ```ruby
-gem 'spree_scaffold', github: 'freego/spree_scaffold', branch: '2-2-stable'
+group :development do
+  gem 'spree_scaffold', github: 'freego/spree_scaffold',
+                        branch: '2-2-stable'
+end
 ```
 
 And then execute:
@@ -24,7 +27,14 @@ Generate a scaffold for the new `Brand` model:
 
     $ rails generate spree_scaffold:scaffold Brand name:string description:text position:integer ...
 
-Output:
+The first attribute is expected to be the "main" one (name, title etc.)
+
+Some more magic:
+* The admin index list will be sortable with drag&drop if you create a `position:integer` field
+* `paperclip` image and file attachments are supported: e.g. `picture:image attachment:file`
+* Will use `friendly_id` for slugs if a `slug:string` field is present
+
+Example output:
 
     create  app/models/spree/brand.rb
     create  app/controllers/spree/admin/brands_controller.rb
@@ -46,10 +56,5 @@ To rollback:
 
     $ rake db:rollback
     $ rails destroy spree_scaffold:scaffold Brand name:string description:text position:integer ...
-
-Some more magic:
-* The admin index list will be sortable with drag&drop if you create a `position:integer` field
-* Image and file attachments are supported: e.g. `picture:image attachment:file`
-
 
 Copyright (c) 2014 sebastyuiop, alepore, released under the New BSD License

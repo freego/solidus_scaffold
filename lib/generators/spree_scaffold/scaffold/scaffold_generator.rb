@@ -55,10 +55,15 @@ module SpreeScaffold
           self.attributes.find { |a| a.type == :image || a.type == :file }
         end
 
+        def slugged?
+          self.attributes.find { |a| a.name == 'slug' && a.type == :string }
+        end
+
       private
         def routes_text
           if sortable?
 <<-eos
+
 Spree::Core::Engine.add_routes do
   namespace :admin do
     resources :#{plural_name} do
