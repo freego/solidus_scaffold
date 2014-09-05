@@ -12,7 +12,7 @@ Add this line to your application's Gemfile:
 ```ruby
 group :development do
   gem 'spree_scaffold', github: 'freego/spree_scaffold',
-                        branch: '2-2-stable'
+                        branch: '2-3-stable'
 end
 ```
 
