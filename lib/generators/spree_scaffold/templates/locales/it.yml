@@ -1,5 +1,8 @@
 it:
   spree:
+    admin:
+      tab:
+        <%= plural_name %>: "<%= class_name.pluralize %>"
     new_<%= singular_name %>: "Nuovo <%= class_name %>"
     listing_<%= plural_name %>: "Lista <%= class_name.pluralize %>"
     editing_<%= singular_name %>: "Modifica <%= class_name %>"
