@@ -12,6 +12,8 @@ module Spree
                       url: '/spree/<%= plural_name %>/:id/:style/:basename.:extension',
                       path: ':rails_root/public/spree/<%= plural_name %>/:id/:style/:basename.:extension',
                       convert_options: { all: '-strip -auto-orient -colorspace sRGB' }
+
+    validates_attachment :<%= attribute.name %>, content_type: { content_type: /\Aimage\/.*\Z/ }
     <% elsif attribute.type == :file %>
     has_attached_file :<%= attribute.name %>,
                       url: '/spree/<%= plural_name %>/:id/:basename.:extension',
