@@ -7,3 +7,9 @@ en:
     listing_<%= plural_name %>: "Listing <%= class_name.pluralize %>"
     editing_<%= singular_name %>: "Editing <%= class_name %>"
     back_to_<%= plural_name %>_list: "Back to <%= class_name.pluralize %> list"
+  activerecord:
+    attributes:
+      spree/<%= singular_name %>:
+<% attributes.each do |attribute| -%>
+        <%= attribute.name %>: <%= attribute.name.titleize %>
+<% end -%>

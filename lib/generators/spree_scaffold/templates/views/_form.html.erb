@@ -4,7 +4,7 @@
 <% next if attribute.name == 'position' && attribute.type == :integer -%>
 <% next if attribute.name == 'slug' -%>
     <%%= f.field_container :<%= attribute.name %> do %>
-      <%%= f.label :<%= attribute.name %>, Spree.t(:<%= attribute.name %>) %>
+      <%%= f.label :<%= attribute.name %> %>
 <% if attribute.type == :image || attribute.type == :file -%>
       <%%= f.file_field :<%= attribute.name %>, class: 'fullwidth' %>
 <% else -%>

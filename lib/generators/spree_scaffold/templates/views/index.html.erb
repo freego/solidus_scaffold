@@ -28,7 +28,7 @@
 <% if sortable? -%>
       <th class="no-border"></td>
 <% end -%>
-      <th><%= attributes.first.name %></th>
+      <th><%%= t(:<%= attributes.first.name %>, scope: 'activerecord.attributes.spree/<%= singular_name %>') %></th>
       <th data-hook="admin_<%= plural_name %>_index_header_actions" class="actions"></th>
     </tr>
   </thead>

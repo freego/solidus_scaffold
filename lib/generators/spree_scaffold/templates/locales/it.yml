@@ -2,8 +2,14 @@ it:
   spree:
     admin:
       tab:
-        <%= plural_name %>: "<%= class_name.pluralize %>"
-    new_<%= singular_name %>: "Nuovo <%= class_name %>"
-    listing_<%= plural_name %>: "Lista <%= class_name.pluralize %>"
-    editing_<%= singular_name %>: "Modifica <%= class_name %>"
-    back_to_<%= plural_name %>_list: "Torna alla lista <%= class_name.pluralize %>"
+        <%= plural_name %>: "<%= class_name.pluralize.titleize %>"
+    new_<%= singular_name %>: "Nuovo <%= class_name.titleize %>"
+    listing_<%= plural_name %>: "Lista <%= class_name.pluralize.titleize %>"
+    editing_<%= singular_name %>: "Modifica <%= class_name.titleize %>"
+    back_to_<%= plural_name %>_list: "Torna alla lista <%= class_name.pluralize.titleize %>"
+  activerecord:
+    attributes:
+      spree/<%= singular_name %>:
+<% attributes.each do |attribute| -%>
+        <%= attribute.name %>: <%= attribute.name.titleize %>
+<% end -%>
