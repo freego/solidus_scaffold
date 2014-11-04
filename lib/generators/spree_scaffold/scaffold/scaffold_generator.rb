@@ -10,7 +10,11 @@ module SpreeScaffold
       argument :attributes, type: :array, default: [], banner: 'field:type field:type'
 
       def self.next_migration_number(path)
-        Time.now.utc.strftime("%Y%m%d%H%M%S")
+        if @prev_migration_nr
+          @prev_migration_nr = @prev_migration_nr += 1
+        else
+          @prev_migration_nr = Time.now.utc.strftime("%Y%m%d%H%M%S").to_i
+        end
       end
 
       def create_model
