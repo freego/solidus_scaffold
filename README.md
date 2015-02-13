@@ -11,8 +11,7 @@ Installation
 Add this line to your application's Gemfile:
 ```ruby
 group :development do
-  gem 'spree_scaffold', github: 'freego/spree_scaffold',
-                        branch: '2-3-stable'
+  gem 'spree_scaffold', github: 'freego/spree_scaffold', branch: '2-X-stable'
 end
 ```
 
@@ -57,4 +56,4 @@ To rollback:
     $ rake db:rollback
     $ rails destroy spree_scaffold:scaffold Brand name:string description:text position:integer ...
 
-Copyright (c) 2014 sebastyuiop, alepore, released under the New BSD License
+Copyright (c) 2015 sebastyuiop, alepore, released under the New BSD License
