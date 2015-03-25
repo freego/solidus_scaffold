@@ -1,5 +1,9 @@
 module Spree
   class <%= class_name %> < ActiveRecord::Base
+<% if sortable? -%>
+    acts_as_list
+
+<% end -%>
 <% if slugged? -%>
     extend FriendlyId
     friendly_id :slug_candidates, use: [:slugged, :finders]
