@@ -68,7 +68,7 @@ module SolidusScaffold
           if sortable?
 <<-eos
 
-Spree::Core::Engine.add_routes do
+Spree::Core::Engine.routes.draw do
   namespace :admin do
     resources :#{plural_name} do
       collection do
@@ -81,7 +81,7 @@ eos
           else
 <<-eos
 
-Spree::Core::Engine.add_routes do
+Spree::Core::Engine.routes.draw do
   namespace :admin do
     resources :#{plural_name}
   end
