@@ -1,2 +1,0 @@
-<!-- insert_bottom "[data-hook='admin_tabs']" -->
-<%%= tab(:<%= plural_name %>) %>

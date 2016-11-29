@@ -2,7 +2,7 @@ it:
   spree:
     admin:
       tab:
-        <%= plural_name %>: "<%= class_name.pluralize.titleize %>"
+        <%= singular_name %>: "<%= class_name.pluralize.titleize %>"
     new_<%= singular_name %>: "Nuovo <%= class_name.titleize %>"
     listing_<%= plural_name %>: "Lista <%= class_name.pluralize.titleize %>"
     editing_<%= singular_name %>: "Modifica <%= class_name.titleize %>"

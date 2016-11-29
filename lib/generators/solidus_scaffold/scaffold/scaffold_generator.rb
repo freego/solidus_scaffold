@@ -42,8 +42,8 @@ module SolidusScaffold
         end
       end
 
-      def create_deface_override
-        template 'overrides/add_to_admin_menu.html.erb.deface', "app/overrides/spree/admin/shared/_menu/add_spree_#{plural_name}.html.erb.deface"
+      def create_admin_menu_item
+        append_file 'config/initializers/spree.rb', admin_menu_config
       end
 
       def create_routes
@@ -51,21 +51,23 @@ module SolidusScaffold
       end
 
       protected
-        def sortable?
-          self.attributes.find { |a| a.name == 'position' && a.type == :integer }
-        end
 
-        def has_attachments?
-          self.attributes.find { |a| a.type == :image || a.type == :file }
-        end
+      def sortable?
+        self.attributes.find { |a| a.name == 'position' && a.type == :integer }
+      end
 
-        def slugged?
-          self.attributes.find { |a| a.name == 'slug' && a.type == :string }
-        end
+      def has_attachments?
+        self.attributes.find { |a| a.type == :image || a.type == :file }
+      end
+
+      def slugged?
+        self.attributes.find { |a| a.name == 'slug' && a.type == :string }
+      end
 
       private
-        def routes_text
-          if sortable?
+
+      def routes_text
+        if sortable?
 <<-eos
 
 Spree::Core::Engine.routes.draw do
@@ -88,7 +90,21 @@ Spree::Core::Engine.routes.draw do
 end
 eos
           end
-        end
+      end
+
+      def admin_menu_config
+<<-eos
+
+Spree::Backend::Config.configure do |config|
+  config.menu_items << config.class::MenuItem.new(
+    [:#{singular_name}],
+    'icon-name',
+    url: :admin_#{plural_name}_path
+  )
+end
+eos
+      end
+
     end
   end
 end
