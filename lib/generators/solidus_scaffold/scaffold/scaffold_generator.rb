@@ -1,6 +1,6 @@
 require 'rails/generators/named_base'
 
-module SpreeScaffold
+module SolidusScaffold
   module Generators
     class ScaffoldGenerator < Rails::Generators::NamedBase
       include Rails::Generators::Migration

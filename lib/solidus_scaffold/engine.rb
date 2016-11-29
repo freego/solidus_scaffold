@@ -1,8 +1,8 @@
-module SpreeScaffold
+module SolidusScaffold
   class Engine < Rails::Engine
-    require 'spree/core'
+    require 'solidus/core'
     isolate_namespace Spree
-    engine_name 'spree_scaffold'
+    engine_name 'solidus_scaffold'
 
     # use rspec for tests
     config.generators do |g|

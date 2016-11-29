@@ -1,9 +1,9 @@
-SpreeScaffold
+SolidusScaffold
 =============
 
-A basic admin scaffold generator for Spree.
+A basic admin scaffold generator for Solidus.
 
-Creates a ready to use CRUD interface for your models inside Spree admin.
+Creates a ready to use CRUD interface for your models inside Solidus admin.
 
 Installation
 ============
@@ -11,7 +11,7 @@ Installation
 Add this line to your application's Gemfile:
 ```ruby
 group :development do
-  gem 'spree_scaffold', github: 'freego/spree_scaffold', branch: '2-X-stable'
+  gem 'solidus_scaffold', github: 'freego/solidus_scaffold'
 end
 ```
 
@@ -24,7 +24,7 @@ Usage
 
 Generate a scaffold for the new `Brand` model:
 
-    $ rails generate spree_scaffold:scaffold Brand name:string description:text position:integer ...
+    $ rails generate solidus_scaffold:scaffold Brand name:string description:text position:integer ...
 
 The first attribute is expected to be the "main" one (name, title etc.)
 
@@ -54,6 +54,6 @@ Then run the migration:
 To rollback:
 
     $ rake db:rollback
-    $ rails destroy spree_scaffold:scaffold Brand name:string description:text position:integer ...
+    $ rails destroy solidus_scaffold:scaffold Brand name:string description:text position:integer ...
 
-Copyright (c) 2015 sebastyuiop, alepore, released under the New BSD License
+Copyright (c) 2017 sebastyuiop, alepore, released under the New BSD License
